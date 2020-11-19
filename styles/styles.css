@@ -1,0 +1,130 @@
+* {
+    font-family: "Barlow Semi Condensed";
+    box-sizing: border-box;
+}
+
+body {
+    background-image: radial-gradient(circle at center top,  hsl(214, 47%, 23%) 20%,  hsl(237, 49%, 15%));
+    
+}
+
+@media screen and (min-width: 1200px) {
+    .game {
+        width: 700px;
+        margin: 0 auto;
+    }
+    
+    .app-content {
+        min-height: 100vh;
+        padding: 2em;
+    }
+    
+    .artboard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        border: 3px solid rgba(255, 255, 255, 0.50);
+        padding: 16px 26px;
+        border-radius: 12px;
+    }
+
+    .artboard h1 {
+        line-height: 0.9;
+        font-size: 22px;
+    }
+
+    .score {
+        color: #fff;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 22px 36px;
+        text-align: center;
+    }
+
+    .score small {
+        color: #2A45C2;
+        font-size: 28px;
+        letter-spacing: 1.2px;
+    }
+
+    .score p {
+        font-size: 42px;
+        color: #000;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    /* Background GAME  */
+
+    .game-interactive {
+        position: relative;
+        height: fill-available;
+        margin-top: 80px;
+    }
+
+    .background {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .background img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .select-options {
+        margin: 0 auto;
+        display: grid;
+        grid-template-areas: "scissors scissors"
+                              "paper spock"
+                              "lizard rock";
+        grid-template-columns: 300px 300px;
+        grid-template-rows: auto auto auto;
+        gap: 50px 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .option {
+        border-width: 12px;
+        border-style: solid;
+        border-radius: 50%;
+        width: 200px;
+    }
+
+    .scissors {
+        grid-area: scissors;
+        border-color: #C76C1B;
+    }
+    
+    .paper {
+        grid-area: paper;
+        
+        border-color: #4664F4;
+    }
+    
+    .spock {
+        grid-area: spock;
+        border-color: #9D1634;
+    }
+    
+    .lizard {
+        grid-area: lizard;
+        border-color: #5F37A8;
+    }
+    
+    .rock {
+        grid-area: rock;
+        border-color: #2D8DAB;
+    }
+
+}

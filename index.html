@@ -1,37 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./public/images/favicon-32x32.png"
+        />
 
-  Score
-  Rules
+        <title>Frontend Mentor | Rock, Paper, Scissors</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <link rel="stylesheet" href="./styles/styles.css" />
+    </head>
+    <body>
+        <div class="game">
+            <div class="app-content">
+                <div class="artboard">
+                    <h1>
+                        ROCK<br />Paper<br />Scissors<br />Lizard<br />Spock
+                    </h1>
+                    <div class="score">
+                        <small>score</small>
+                        <p>12</p>
+                    </div>
+                </div>
+                <section class="game-interactive">
+                    <div class="background">
+                        <img src="/public/images/bg-pentagon.svg" alt="" />
+                    </div>
+                    <div class="select-options">
+                        <div class="option scissors">
+                            <img
+                                src="/public/images/icon-scissors.svg"
+                                alt="scissors"
+                            />
+                        </div>
+                        <div class="option paper">
+                            <img
+                                src="/public/images/icon-paper.svg"
+                                alt="paper"
+                            />
+                        </div>
+                        <div class="option spock">
+                            <img
+                                src="/public/images/icon-spock.svg"
+                                alt="spock"
+                            />
+                        </div>
+                        <div class="option lizard">
+                            <img
+                                src="/public/images/icon-lizard.svg"
+                                alt="lizard"
+                            />
+                        </div>
+                        <div class="option rock">
+                            <img
+                                src="/public/images/icon-rock.svg"
+                                alt="rock"
+                            />
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
 
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        <div class="modal"></div>
+        <div class="overlay"></div>
+    </body>
 </html>
