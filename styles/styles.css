@@ -97,14 +97,39 @@ body {
     .select-options {
         margin: 0 auto;
         display: grid;
-        grid-template-areas: "scissors scissors"
-                              "spock paper"
-                              "lizard rock";
+        grid-template-areas: "first-row first-row"
+                             "second-row second-row"
+                             "third-row third-row";
         grid-template-columns: 50% 50%;
-        grid-template-rows: auto auto auto;
-        /* gap: 50px 0; */
+        grid-template-rows: 150px 150px 150px;
         justify-items: center;
         align-items: center;
+    }
+
+    .select-options > div {
+        width: 100%;
+    }
+
+    .first-row {
+        grid-area: first-row;
+        justify-content: center;
+        display: flex;
+    }
+
+    .second-row {
+        grid-area: second-row;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .second-row > div {
+        margin-top: -40px;
+    }
+    
+    .third-row {
+        grid-area: third-row;
+        justify-content: space-evenly;
+        display: flex;
     }
 
     /* Setting options and box */
@@ -119,6 +144,7 @@ body {
         overflow: hidden;
         cursor: pointer;
         transition: transform 0.18s ease;
+        display: inline-block;
     }
 
     .option:hover {
@@ -136,36 +162,31 @@ body {
     }
 
     .scissors {
-        grid-area: scissors;
         border-color: var(--scissors);
         box-shadow: 0px 5px 0px var(--scissors-shadow);
-
     }
     
     .paper {
-        grid-area: paper;
         
         border-color: var(--paper);
         box-shadow: var(--paper-shadow) 0px 5px 0px;
-
     }
     
     .spock {
-        grid-area: spock;
+
         border-color: var(--spock);
         box-shadow: var(--spock-shadow) 0px 5px 0px;
-
+        
     }
     
     .lizard {
-        grid-area: lizard;
+
         border-color: var(--lizard);
         box-shadow: var(--lizard-shadow) 0px 5px 0px;
 
     }
     
     .rock {
-        grid-area: rock;
         border-color: var(--rock);
         box-shadow: var(--rock-shadow) 0px 5px 0px;
 
