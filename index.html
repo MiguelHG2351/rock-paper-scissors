@@ -42,7 +42,7 @@
                     </div>
                     <div class="select-options">
                         <div class="first-row">
-                            <div class="option scissors">
+                            <div class="option scissors" data-figure="scissors">
                                 <div class="box">
                                     <img
                                         src="/public/images/icon-scissors.svg"
@@ -52,15 +52,7 @@
                             </div>
                         </div>
                         <div class="second-row">
-                            <div class="option paper">
-                                <div class="box">
-                                    <img
-                                        src="/public/images/icon-paper.svg"
-                                        alt="paper"
-                                    />
-                                </div>
-                            </div>
-                            <div class="option spock">
+                            <div class="option spock" data-figure="spock">
                                 <div class="box">
                                     <img
                                         src="/public/images/icon-spock.svg"
@@ -68,31 +60,114 @@
                                     />
                                 </div>
                             </div>
+                            <div class="option paper" data-figure="paper">
+                                <div class="box">
+                                    <img
+                                        src="/public/images/icon-paper.svg"
+                                        alt="paper"
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <div class="third-row">
-                          <div class="option lizard">
-                              <div class="box">
-                                  <img
-                                      src="/public/images/icon-lizard.svg"
-                                      alt="lizard"
-                                  />
-                              </div>
-                          </div>
-                          <div class="option rock">
-                              <div class="box">
-                                  <img
-                                      src="/public/images/icon-rock.svg"
-                                      alt="rock"
-                                  />
-                              </div>
-                          </div>
+                            <div class="option lizard" data-figure="lizard">
+                                <div class="box">
+                                    <img
+                                        src="/public/images/icon-lizard.svg"
+                                        alt="lizard"
+                                    />
+                                </div>
+                            </div>
+                            <div class="option rock" data-figure="rock">
+                                <div class="box">
+                                    <img
+                                        src="/public/images/icon-rock.svg"
+                                        alt="rock"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
+                <section class="round" id="round">
+                    <section class="element-compare col1">
+                        <div class="container-element-compare">
+                            <h3>You picked</h3>
+                            <div class="option rock" data-figure="rock">
+                                <div class="box">
+                                    <img
+                                        src="/public/images/icon-rock.svg"
+                                        alt="rock"
+                                        class="active"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="results">
+                        <h2>You Lose</h2>
+                        <button class="btn">Play Again</button>
+                    </div>
+                    <section class="element-compare col3">
+                        <div class="container-element-compare">
+                            <h3>The House picked</h3>
+                            <div class="option scissors" data-figure="rock">
+                                <div class="box">
+                                    <img
+                                        src="/public/images/icon-rock.svg"
+                                        alt="rock"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
             </div>
         </div>
-
-        <div class="modal"></div>
-        <div class="overlay"></div>
+        <div class="rules-botton">
+            <button class="btn" id="toggle">Rules</button>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-containter">
+                <h2>Rules</h2>
+                <img
+                    src="/public/images/image-rules-bonus.svg"
+                    alt="Reglas de juego"
+                />
+                <img
+                    id="close-modal"
+                    src="public/images/icon-close.svg"
+                    alt=""
+                />
+            </div>
+        </div>
+        <div class="overlay" id="overlay"></div>
     </body>
+    <script>
+        const $modal = document.getElementById('modal');
+        const $overlay = document.getElementById('overlay');
+        const $toggle = document.getElementById('toggle');
+        const $closeModal = document.getElementById('close-modal');
+        const $figure = document.querySelectorAll('[data-figure]');
+
+        $toggle.addEventListener('click', () => {
+            $overlay.classList.toggle('active');
+            $modal.classList.toggle('active');
+        });
+
+        $closeModal.addEventListener('click', () => {
+            $overlay.classList.remove('active');
+            $modal.classList.remove('active');
+        });
+
+        class Game {
+            constructor() {
+                this.nodeList = $figure;
+            }
+
+            run() {}
+        }
+
+        const initGame = new Game().run();
+    </script>
 </html>

@@ -4,21 +4,147 @@
 }
 
 :root {
-    --scissors: #C76C1B;
+    --scissors: rgb(236, 168, 30);
     --scissors-shadow: rgba(199, 108, 27, 0.68);
-    --paper: #4664F4;
-    --paper-shadow: rgb(70 100 244 / 70%);
+    --paper: rgb(81, 110, 244);
+    --paper-shadow: rgb(42 69 194 / 63%);
     --spock: #2D8DAB;
     --spock-shadow: rgba(45, 141, 171, 0.71);
     --lizard: #5F37A8;
     --lizard-shadow: rgba(95, 55, 168, 0.71);
-    --rock: #9D1634;
-    --rock-shadow: rgba(157, 22, 52, 0.7);
+    --rock: rgb(222, 58, 90);
+    --rock-shadow: rgb(222 58 90 / 68%);
 }
 
 body {
     background-image: radial-gradient(circle at center top,  hsl(214, 47%, 23%) 20%,  hsl(237, 49%, 15%));
     
+}
+
+.btn {
+    border: 1px solid #fff;
+    outline: none;
+    padding: 14px 46px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background 0.12s ease;
+}
+
+.btn:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.rules-botton {
+    position: fixed;
+    bottom: 2em;
+    right: 3em;
+}
+
+.modal {
+    position: fixed;
+    display: none;
+    left: calc(50% - 200px);
+    top: calc(50vh - 220px);
+    width: 400px;
+    height: 461px;
+    background-color: #fff;
+    padding: 12px 22px;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 6;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-containter {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.modal h2 {
+    font-weight: 700;
+    font-size: 28px;
+    color: #3B4262;
+}
+
+.modal img:last-child {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.72);
+    z-index: 5;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Inicio de las rondas del juego */
+
+.round {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: "user results user2";
+    align-items: center;
+}
+
+.element-compare {
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.element-compare.col1 {
+    grid-area: user;
+    align-items: flex-end;
+}
+
+.element-compare.col3 {
+    grid-area: user2;
+    align-items: flex-start;
+}
+
+.results {
+    grid-area: results;
+    display: none;
+}
+
+
+
+@keyframes rotateFig {
+    from {
+        transform: rotateY(0);
+    }
+    
+    to {
+        transform: rotateY(360deg);
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -74,6 +200,7 @@ body {
         position: relative;
         height: fill-available;
         margin-top: 80px;
+        display: none; /* TEMPORAL */
     }
 
     .background {
@@ -93,6 +220,8 @@ body {
         height: auto;
         object-fit: cover;
     }
+
+    /* Opciones del juego */
 
     .select-options {
         margin: 0 auto;
@@ -150,7 +279,7 @@ body {
     .option:hover {
         transform: scale(0.9);
     }
-
+    
     .box {
         width: 100%;
         height: 100%;
@@ -159,6 +288,10 @@ body {
         align-items: center;
         background-color: #fff;
         box-shadow: rgb(186, 191, 212) 0px -5px 0px;
+    }
+    
+    .box img.active {
+        animation: rotateFig 0.7s;
     }
 
     .scissors {
