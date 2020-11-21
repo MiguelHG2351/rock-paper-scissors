@@ -101,12 +101,16 @@ body {
 /* Inicio de las rondas del juego */
 
 .round {
+    display: none;
     margin-top: 32px;
-    display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
     grid-template-areas: "user results user2";
     align-items: center;
+}
+
+.round.visible {
+    display: grid;
 }
 
 .element-compare {
@@ -211,7 +215,10 @@ body {
         position: relative;
         height: fill-available;
         margin-top: 80px;
-        display: none; /* TEMPORAL */
+    }
+    
+    .game-interactive.hidden {
+        display: none;
     }
 
     .background {
@@ -250,6 +257,8 @@ body {
         width: 100%;
     }
 
+    /* Container Options */
+
     .first-row {
         grid-area: first-row;
         justify-content: center;
@@ -283,11 +292,18 @@ body {
         height: var(--figure);
         overflow: hidden;
         cursor: pointer;
-        transition: transform 0.18s ease;
         display: inline-block;
+        transition: all ease 0.18s;
+        box-shadow: rgba(255, 255, 255, 0.04) 0px 0px 0px 0px, rgba(255, 255, 255, 0.04) 0px 0px 0px 0px, rgba(255, 255, 255, 0.02) 0px 0px 0px 0px;
     }
-
+    
+    .option.active {
+        transition: transform 0.18s ease;
+        box-shadow: rgba(255, 255, 255, 0.04) 0px 0px 0px 40px, rgba(255, 255, 255, 0.04) 0px 0px 0px 80px, rgba(255, 255, 255, 0.02) 0px 0px 0px 120px;
+    }
+    
     .option:hover {
+        box-shadow: rgba(255, 255, 255, 0.04) 0px 0px 0px 40px, rgba(255, 255, 255, 0.04) 0px 0px 0px 80px, rgba(255, 255, 255, 0.02) 0px 0px 0px 120px;
         transform: scale(0.9);
     }
     
