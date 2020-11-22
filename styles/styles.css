@@ -299,6 +299,7 @@ body {
         display: inline-block;
         transition: all ease 0.18s;
         box-shadow: rgba(255, 255, 255, 0.04) 0px 0px 0px 0px, rgba(255, 255, 255, 0.04) 0px 0px 0px 0px, rgba(255, 255, 255, 0.02) 0px 0px 0px 0px;
+        user-select: none;
     }
     
     .option.active {

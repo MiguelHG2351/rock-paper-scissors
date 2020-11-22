@@ -139,6 +139,7 @@ class Game {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
                 $results.children[0].textContent = this.status.win
+                localStorage.setItem('score', Number(localStorage.getItem('score'))+1)
 
             }
 
@@ -162,6 +163,7 @@ class Game {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
                 $results.children[0].textContent = this.status.win
+                localStorage.setItem('score', Number(localStorage.getItem('score'))+1)
 
             }
 
@@ -183,6 +185,7 @@ class Game {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
                 $results.children[0].textContent = this.status.win
+                localStorage.setItem('score', Number(localStorage.getItem('score'))+1)
 
             }
 
@@ -204,6 +207,7 @@ class Game {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
                 $results.children[0].textContent = this.status.win
+                localStorage.setItem('score', Number(localStorage.getItem('score'))+1)
 
             }
 
