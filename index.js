@@ -7,6 +7,7 @@ const $closeModal = document.getElementById('close-modal');
 const $figure = document.querySelectorAll('[data-figure]');
 const $gameInteractive = document.getElementById('game-interactive');
 const $round = document.getElementById('round');
+const $userSelect = document.getElementById('container-element-compare')
 
 $toggle.addEventListener('click', () => {
     $overlay.classList.toggle('active');
@@ -40,11 +41,12 @@ class Game {
         });
     }
 
+    randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
     processHTML(element) {
         this.renderTemplate(element.outerHTML)
-        // for(let i =0; i!=5; i = Math.random()*6) {
-        //     console.log('XD')
-        // }
     }
     
     renderTemplate(html) {
