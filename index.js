@@ -35,6 +35,7 @@ $returnGame.addEventListener('click', () => {
     $gameInteractive.classList.remove('hidden')
     $round.classList.add('hidden')
     $score.textContent = Number(localStorage.getItem('score')) || 0
+    $results.classList.remove('active')
 })
 
 class Game {
@@ -58,9 +59,9 @@ class Game {
     run() {
         this.nodeList.forEach((element) => {
             element.addEventListener('click', (e) => {
-                this.renderTemplate(e.currentTarget)
                 $gameInteractive.classList.add('hidden')
                 $round.classList.remove('hidden')
+                this.results(e.currentTarget)
             })
         });
     }
@@ -70,47 +71,59 @@ class Game {
     }
 
     renderTemplate(currentSelect) {
-        const html = currentSelect.outerHTML
-        const selectUser = document.createElement('div')
-        selectUser.classList.add('container-select-user')
-        // const datasetUser = html.dataset['figure']
 
-        selectUser.innerHTML = html
-        const userFigure = selectUser.children[0].dataset["figure"]
-        delete selectUser.children[0].dataset["figure"] // Borramos el dataset
-        
-        const selectBot = document.createElement('div')
-        const randomNumber = this.randomNumber(0, 5)
-        
-        selectBot.innerHTML = $figure[randomNumber].outerHTML
-        const botFigure = selectBot.children[0].dataset["figure"]
-        delete selectBot.children[0].dataset["figure"] // Borramos el dataset
-        
-        if($userSelect.children.length >= 2) $userSelect.children[1].remove()
-        
-        if($botSelect.children.length >= 2) $botSelect.children[1].remove()
-        
-        // $userSelect.appendChild(selectUser)
-        // $botSelect.appendChild(selectBot)
-        
-        let i = 0
-        let interval = setInterval(() => {
-            // $botSelect.children.length >= 2 ? $botSelect.replaceChild($figure[i], $botSelect.children[1]) : $botSelect.appendChild(selectBot)
-            // $botSelect.children.length >= 2 ? $botSelect.children[1].replaceWith($figure[i]) : $botSelect.appendChild(selectBot)
-            $botSelect.children.length >= 2 ? $botSelect.children[1].replaceWith($figure[i].cloneNode(true)) : $botSelect.appendChild(selectBot)
+        return new Promise((resolve, reject) => {
+            const html = currentSelect.outerHTML
+            const selectUser = document.createElement('div')
+            selectUser.classList.add('container-select-user')
+            // const datasetUser = html.dataset['figure']
+    
+            selectUser.innerHTML = html
+            const userFigure = selectUser.children[0].dataset["figure"]
+            delete selectUser.children[0].dataset["figure"] // Borramos el dataset
             
-            console.log(i)
-            if(i == 4) {
-                $botSelect.replaceChild(selectBot, $botSelect.children[1])
-                // $botSelect.appendChild(selectBot)
-                clearInterval(interval)
-            }
-            i++
-        }, 130)
+            const selectBot = document.createElement('div')
+            const randomNumber = this.randomNumber(0, 5)
+            
+            selectBot.innerHTML = $figure[randomNumber].outerHTML
+            const botFigure = selectBot.children[0].dataset["figure"]
+            delete selectBot.children[0].dataset["figure"] // Borramos el dataset
+            
+            if($userSelect.children.length >= 2) $userSelect.children[1].remove()
+            
+            if($botSelect.children.length >= 2) $botSelect.children[1].remove()
+            
+            // $userSelect.appendChild(selectUser)
+            // $botSelect.appendChild(selectBot)
+            
+            let i = 0
+            $userSelect.appendChild(selectUser)
+            let interval = setInterval(() => {
+                // $botSelect.children.length >= 2 ? $botSelect.replaceChild($figure[i], $botSelect.children[1]) : $botSelect.appendChild(selectBot)
+                // $botSelect.children.length >= 2 ? $botSelect.children[1].replaceWith($figure[i]) : $botSelect.appendChild(selectBot)
+                $botSelect.children.length >= 2 ? $botSelect.children[1].replaceWith($figure[i].cloneNode(true)) : $botSelect.appendChild(selectBot)
+                
+                console.log(i)
+                if(i == 4) {
+                    $botSelect.replaceChild(selectBot, $botSelect.children[1])
+                    // $botSelect.appendChild(selectBot)
+                    clearInterval(interval)
 
-        $userSelect.appendChild(selectUser)
+                    resolve([userFigure, botFigure, selectUser, selectBot])
+                }
+                i++
+            }, 130)
+    
+        })
+
+    }
+
+    results(currentSelect) {
+
+        this.renderTemplate(currentSelect).then(([userFigure, botFigure, selectUser, selectBot]) => {
 
         if(userFigure === this.optionsElement.rock) {
+
             if(botFigure === this.optionsElement.scissors || botFigure === this.optionsElement.lizard) {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
@@ -223,7 +236,7 @@ class Game {
             }
 
         }
-
+    }).catch(f => console.log(f))
     }
 
 }
