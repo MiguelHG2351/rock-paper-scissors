@@ -11,6 +11,7 @@ const $userSelect = document.getElementById('user-select')
 const $botSelect = document.getElementById('bot-select')
 const $results = document.getElementById('results')
 const $returnGame = document.getElementById('return-game')
+const $score = document.getElementById('score')
 
 $toggle.addEventListener('click', () => {
     $overlay.classList.toggle('active');
@@ -41,11 +42,18 @@ class Game {
             spock: 'spock',
             lizard: 'lizard'
         }
+        this.status = {
+            win: 'You Win',
+            lose: 'You Lose',
+            draw: 'You Draw'
+        }
+
     }
     
     run() {
         this.nodeList.forEach((element) => {
             element.addEventListener('click', (e) => {
+                $score.textContent = Number(localStorage.getItem('score')) || 0
                 this.renderTemplate(e.currentTarget)
                 $gameInteractive.classList.add('hidden')
                 $round.classList.remove('hidden')
@@ -102,8 +110,110 @@ class Game {
             if(botFigure === this.optionsElement.scissors || botFigure === this.optionsElement.lizard) {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
-                $results.children[0].textContent = 'You Win'
+                $results.children[0].textContent = this.status.win
+                localStorage.setItem('score', this.score+1)
+
             }
+
+            if(botFigure === this.optionsElement.paper || botFigure === this.optionsElement.spock) {
+                selectBot.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.lose
+
+            }
+            
+            if(botFigure === this.optionsElement.rock) {
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.draw
+
+            }
+            
+        }
+        
+        if(userFigure === this.optionsElement.paper) {
+            if(botFigure === this.optionsElement.spock || botFigure === this.optionsElement.rock) {
+                selectUser.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.win
+
+            }
+
+            if(botFigure === this.optionsElement.scissors || botFigure === this.optionsElement.lizard) {
+                selectBot.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.lose
+
+            }
+            
+            if(botFigure === this.optionsElement.paper) {
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.draw
+
+            }
+            
+        }
+        
+        if(userFigure === this.optionsElement.scissors) {
+            if(botFigure === this.optionsElement.paper || botFigure === this.optionsElement.lizard) {
+                selectUser.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.win
+
+            }
+
+            if(botFigure === this.optionsElement.spock || botFigure === this.optionsElement.rock) {
+                selectBot.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.lose
+            }
+
+            if(botFigure === this.optionsElement.scissors) {
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.draw
+            }
+
+        }
+
+        if(userFigure === this.optionsElement.lizard) {
+            if(botFigure === this.optionsElement.paper || botFigure === this.optionsElement.spock) {
+                selectUser.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.win
+
+            }
+
+            if(botFigure === this.optionsElement.scissors || botFigure === this.optionsElement.rock) {
+                selectBot.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.lose
+            }
+
+            if(botFigure === this.optionsElement.lizard) {
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.draw
+            }
+
+        }
+
+        if(userFigure === this.optionsElement.spock) {
+            if(botFigure === this.optionsElement.scissors || botFigure === this.optionsElement.rock) {
+                selectUser.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.win
+
+            }
+
+            if(botFigure === this.optionsElement.lizard || botFigure === this.optionsElement.paper) {
+                selectBot.children[0].classList.add('active')
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.lose
+            }
+
+            if(botFigure === this.optionsElement.spock) {
+                $results.classList.add('active')
+                $results.children[0].textContent = this.status.draw
+            }
+
         }
 
     }
