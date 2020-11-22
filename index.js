@@ -13,6 +13,10 @@ const $results = document.getElementById('results')
 const $returnGame = document.getElementById('return-game')
 const $score = document.getElementById('score')
 
+window.addEventListener('load', () => {
+    $score.textContent = Number(localStorage.getItem('score')) || 0
+})
+
 $toggle.addEventListener('click', () => {
     $overlay.classList.toggle('active');
     $modal.classList.toggle('active');
@@ -30,6 +34,7 @@ $overlay.addEventListener('click', removeModalAndOverlay)
 $returnGame.addEventListener('click', () => {
     $gameInteractive.classList.remove('hidden')
     $round.classList.add('hidden')
+    $score.textContent = Number(localStorage.getItem('score')) || 0
 })
 
 class Game {
@@ -53,7 +58,6 @@ class Game {
     run() {
         this.nodeList.forEach((element) => {
             element.addEventListener('click', (e) => {
-                $score.textContent = Number(localStorage.getItem('score')) || 0
                 this.renderTemplate(e.currentTarget)
                 $gameInteractive.classList.add('hidden')
                 $round.classList.remove('hidden')
@@ -111,7 +115,7 @@ class Game {
                 selectUser.children[0].classList.add('active')
                 $results.classList.add('active')
                 $results.children[0].textContent = this.status.win
-                localStorage.setItem('score', this.score+1)
+                localStorage.setItem('score', Number(localStorage.getItem('score'))+1)
 
             }
 
