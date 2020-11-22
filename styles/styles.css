@@ -101,12 +101,16 @@ body {
 /* Inicio de las rondas del juego */
 
 .round {
-    display: none;
     margin-top: 32px;
+    display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
     grid-template-areas: "user results user2";
     align-items: center;
+}
+
+.round.hidden {
+    display: none;
 }
 
 .round.visible {
@@ -272,7 +276,7 @@ body {
     }
 
     .second-row > div {
-        margin-top: -40px;
+        margin-top: -60px;
     }
     
     .third-row {

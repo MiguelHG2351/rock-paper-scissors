@@ -33,7 +33,7 @@
                         <p>12</p>
                     </div>
                 </div>
-                <section class="game-interactive">
+                <section class="game-interactive" id="game-interactive">
                     <div class="background">
                         <img
                             src="public/images/bg-pentagon.svg"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="round" id="round">
+                <section class="round hidden" id="round">
                     <section class="element-compare col1">
                         <div class="container-element-compare">
                             <h3>You picked</h3>
@@ -143,31 +143,5 @@
         </div>
         <div class="overlay" id="overlay"></div>
     </body>
-    <script>
-        const $modal = document.getElementById('modal');
-        const $overlay = document.getElementById('overlay');
-        const $toggle = document.getElementById('toggle');
-        const $closeModal = document.getElementById('close-modal');
-        const $figure = document.querySelectorAll('[data-figure]');
-
-        $toggle.addEventListener('click', () => {
-            $overlay.classList.toggle('active');
-            $modal.classList.toggle('active');
-        });
-
-        $closeModal.addEventListener('click', () => {
-            $overlay.classList.remove('active');
-            $modal.classList.remove('active');
-        });
-
-        class Game {
-            constructor() {
-                this.nodeList = $figure;
-            }
-
-            run() {}
-        }
-
-        const initGame = new Game().run();
-    </script>
+    <script src="index.js"></script>
 </html>
