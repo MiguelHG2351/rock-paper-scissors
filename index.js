@@ -103,7 +103,6 @@ class Game {
                 // $botSelect.children.length >= 2 ? $botSelect.children[1].replaceWith($figure[i]) : $botSelect.appendChild(selectBot)
                 $botSelect.children.length >= 2 ? $botSelect.children[1].replaceWith($figure[i].cloneNode(true)) : $botSelect.appendChild(selectBot)
                 
-                console.log(i)
                 if(i == 4) {
                     $botSelect.replaceChild(selectBot, $botSelect.children[1])
                     // $botSelect.appendChild(selectBot)
